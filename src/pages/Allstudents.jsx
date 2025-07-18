@@ -13,6 +13,9 @@ const AllStudents = () => {
   return (
     <div className="max-w-4xl mx-auto mt-6">
       <h2 className="text-2xl font-bold mb-4">All Students</h2>
+      <p className="text-gray-600 mb-4">
+      Note:You will be first register.If already register then just login</p>
+      <p className='text-gray-600 mb-4'>Otherwise you can,t see all students details </p>
       <div className="overflow-x-auto">
         <table className="w-full border">
           <thead className="bg-slate-200 text-slate-800">
