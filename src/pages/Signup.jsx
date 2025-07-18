@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const Signup = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const { login } = useAuth();
@@ -15,6 +15,7 @@ const Register = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    console.log("form submmited",form)
     try {
       const res = await axios.post(
         '/auth/signup', 
@@ -71,4 +72,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Signup;
