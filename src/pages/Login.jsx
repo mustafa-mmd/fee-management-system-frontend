@@ -16,11 +16,17 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8080/auth/login', form);
+      const res = await axios.post(
+        '/auth/login',
+        form,
+        {
+          withCredentials: true 
+        }
+      );
       login(res.data.user, res.data.token);
       navigate('/profile');
     } catch (err) {
-      setError(err.response.data.message || 'Login failed');
+      setError(err.response?.data?.message || 'Login failed');
     }
   };
 
@@ -47,7 +53,9 @@ const Login = () => {
           className="w-full p-2 border rounded"
           required
         />
-        <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Login</button>
+        <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+          Login
+        </button>
       </form>
     </div>
   );

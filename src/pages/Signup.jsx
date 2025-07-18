@@ -17,14 +17,13 @@ const Register = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        'http://localhost:8080/auth/signup',
+        '/auth/signup', 
         form,
         {
-          withCredentials: true  
+          withCredentials: true
         }
       );
 
-      
       login(res.data.user, res.data.token);
       navigate('/profile');
     } catch (err) {

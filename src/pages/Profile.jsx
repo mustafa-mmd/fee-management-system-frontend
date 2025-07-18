@@ -13,7 +13,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:8080/user/me', {
+        const res = await axios.get('/user/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -35,7 +35,7 @@ const Profile = () => {
   const handleSave = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.put('http://localhost:8080/user/update', { ...form, feesPaid }, {
+      const res = await axios.put('/user/update', { ...form, feesPaid }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

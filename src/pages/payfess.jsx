@@ -7,10 +7,15 @@ const PayFees = () => {
   const { login } = useAuth();
 
   const handlePayment = async () => {
-    const res = await axios.put('http://localhost:8080/user/update', { feesPaid: true });
-    login(res.data, localStorage.getItem('token'));
-    alert("Fees Paid Successfully");
-    navigate('/profile');
+    try {
+      const res = await axios.put('/user/update', { feesPaid: true }); // ✅ Correct path
+      login(res.data, localStorage.getItem('token'));
+      alert("Fees Paid Successfully");
+      navigate('/profile');
+    } catch (err) {
+      console.error("Payment failed:", err);
+      alert("Payment failed! Try again.");
+    }
   };
 
   return (

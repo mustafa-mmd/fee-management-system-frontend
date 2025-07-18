@@ -5,8 +5,9 @@ const AllStudents = () => {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/user/all')
-      .then(res => setStudents(res.data));
+    axios.get('/user/all', { withCredentials: true }) 
+      .then(res => setStudents(res.data))
+      .catch(err => console.error('Error fetching students:', err));
   }, []);
 
   return (
@@ -14,8 +15,7 @@ const AllStudents = () => {
       <h2 className="text-2xl font-bold mb-4">All Students</h2>
       <div className="overflow-x-auto">
         <table className="w-full border">
-          <thead className="bg-slate-200 text-slate-800
-">
+          <thead className="bg-slate-200 text-slate-800">
             <tr>
               <th className="p-2 border">Name</th>
               <th className="p-2 border">Email</th>
