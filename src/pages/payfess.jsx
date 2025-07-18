@@ -8,7 +8,7 @@ const PayFees = () => {
 
   const handlePayment = async () => {
     try {
-      const res = await axios.put('/user/update', { feesPaid: true }); // ✅ Correct path
+      const res = await axios.put('/user/update', { feesPaid: true }); 
       login(res.data, localStorage.getItem('token'));
       alert("Fees Paid Successfully");
       navigate('/profile');

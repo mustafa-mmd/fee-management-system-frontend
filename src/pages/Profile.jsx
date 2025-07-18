@@ -33,20 +33,22 @@ const Profile = () => {
   };
 
   const handleSave = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const res = await axios.put('/user/update', { ...form, feesPaid }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      login(res.data, token);
-      alert('Profile updated');
-    } catch (error) {
-      alert("Failed to update profile");
-      console.error(error);
-    }
-  };
+  try {
+    const token = localStorage.getItem('token');
+    const res = await axios.put('/user/update', { ...form, feesPaid }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    login(res.data, token);
+    alert('Profile updated');
+    navigate('/'); // Redirect to All Students page
+  } catch (error) {
+    alert("Failed to update profile");
+    console.error(error);
+  }
+};
+
 
   return (
     <div className="max-w-md mx-auto mt-8 space-y-4">
